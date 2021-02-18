@@ -17,25 +17,25 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = input('\nWhich city would you like to see its data (chicago, new york city, washington)?\n').lower().strip()
+    city = input('\nWhich city would you like to see its data (chicago, new york city, washington)? ').lower().strip()
     #this loop handles the the wrong inputs
     while (city not in CITY_DATA.keys()):
         print("\Invalid input!")
-        city = input('\ntry again (chicago, new york city, washington) : ').lower().strip()
+        city = input('\ntry again (chicago, new york city, washington): ').lower().strip()
 
     # get user input for month (all, january, february, ... , june)
-    month = input('\nWhich month would you like to filter by(all, january, february, ... , june)?').title().strip()
+    month = input('\nWhich month would you like to filter by(all, january, february, ... , june)? ').title().strip()
     #this loop handles the the wrong inputs
     while (month not in ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']):
         print("Invalid input!")
-        month = input('\ntry again (all, january, february, ... , june) : ').title().strip()
+        month = input('\ntry again (all, january, february, ... , june): ').title().strip()
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input('\nWhich day would you like to filter by (all, monday, tuesday, ... sunday)?').title().strip()
+    day = input('\nWhich day would you like to filter by (all, monday, tuesday, ... sunday)? ').title().strip()
     #this loop handles the the wrong inputs
     while (day not in ['All', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']):
         print("Invalid input!")
-        day = input('\ntry again (all, monday, tuesday, ... sunday) : ').title().strip()
+        day = input('\ntry again (all, monday, tuesday, ... sunday): ').title().strip()
 
     print('-'*40)
     return city, month, day
@@ -144,32 +144,32 @@ def main():
         city, month, day = get_filters()
         df = load_data(city, month, day)
 
-        user_raw_data = input('\nWould you like to see the row data? Enter (yes or no):\n').lower().strip()
+        user_raw_data = input('\nWould you like to see the row data? Enter (yes or no): ').lower().strip()
         start = 0
         end = 5
         #this loop handles the the wrong inputs
         while (user_raw_data not in ['yes', 'no'] ):
             print("\nInvalid input!")
-            user_raw_data = input('\nTry again (yes or no) : ').lower().strip()
+            user_raw_data = input('\nTry again (yes or no): ').lower().strip()
         while (user_raw_data == 'yes'):
             print(df.iloc[start:end])
             start += 5
             end += 5
-            user_raw_data = input('Would you like to see more data? Enter (yes or no):').lower().strip()
+            user_raw_data = input('Would you like to see more data? Enter (yes or no): ').lower().strip()
             while (user_raw_data not in ['yes', 'no'] ):
                 print("\nInvalid input!")
-                user_raw_data = input('\nTry again (yes or no) : ').lower().strip()
+                user_raw_data = input('\nTry again (yes or no): ').lower().strip()
 
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n').lower().strip()
+        restart = input('\nWould you like to restart? Enter yes or no. ').lower().strip()
         #this loop handles the the wrong inputs
         while (restart not in ['yes', 'no'] ):
             print("\nInvalid input!")
-            restart = input('\nTry again (yes or no) : ')
+            restart = input('\nTry again (yes or no): ')
         if restart != 'yes':
             break
 
